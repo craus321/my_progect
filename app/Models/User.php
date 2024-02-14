@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
 
-class User extends Authenticatable
+class User extends \TCG\Voyager\Models\User
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -24,8 +24,6 @@ class User extends Authenticatable
         'surname',
         'phone',
         'patronymic',
-
-
     ];
 
     /**
@@ -48,13 +46,13 @@ class User extends Authenticatable
     ];
 
     /**
-     * Set the user's password.
+     * Determine if the user is an administrator.
      *
-     * @param  string  $value
-     * @return void
+     * @return bool
      */
-    public function setPasswordAttribute($value)
+    public function isAdmin()
     {
-        $this->attributes['password'] = Hash::make($value);
+        // Здесь предполагается, что у ваших администраторов role_id равен 1
+        return $this->role_id === 1;
     }
 }
