@@ -6,7 +6,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="footer-logo">
-                            <a href="{{ asset('index.html') }}">
+                            <a href="{{ asset('/') }}">
                                 <img src="{{ asset('img/logo/w_logo.png') }}" alt="img">
                             </a>
                         </div>
