@@ -14,9 +14,9 @@ class Kernel extends HttpKernel
      * @var array<int, class-string|string>
      */
     protected $routeMiddleware = [
-    // ... другие middleware
-    'auth.check' => \App\Http\Middleware\AuthCheck::class,
-];
+        'throttle' => \App\Http\Middleware\ThrottleRequests::class,
+        'auth.check' => \App\Http\Middleware\AuthCheck::class,
+    ];
 
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
@@ -34,7 +34,6 @@ class Kernel extends HttpKernel
      *
      * @var array<string, array<int, class-string|string>>
      */
-
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
@@ -72,5 +71,4 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
-
 }

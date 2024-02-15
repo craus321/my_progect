@@ -13,8 +13,9 @@ use TCG\Voyager\Voyager;
 use App\Http\Controllers\subscribeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PortfoliotController;
+use App\Http\Middleware\ThrottleRequests;
 
-
+Route::middleware(ThrottleRequests::class)->group(function () {
 Route::group(['prefix' => 'admin'], function () {
     (new TCG\Voyager\Voyager)->routes();
 });
@@ -160,3 +161,8 @@ Route::get('/', [HomeController::class, 'form_price'])->name('about.price');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/search', [BlogController::class, 'search'])->name('blog.search');
+
+ 
+
+
+});
